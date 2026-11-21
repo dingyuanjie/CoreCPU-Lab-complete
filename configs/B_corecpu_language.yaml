@@ -1,0 +1,31 @@
+model:
+  task: language
+  organization: corecpu
+  compute: conventional
+  hidden_dim: 64
+  ff_dim: 96
+  depth: 2
+  num_experts: 4
+  top_k: 1
+  num_slots: 4
+  heads: 4
+  context: 32
+  read_weight: 0.1
+  step_weight: 0.5
+  route_weight: 0.0
+  balance_weight: 0.01
+train:
+  learning: bp
+  seed: 313
+  steps: 100
+  batch_size: 4
+  lr: 0.001
+  grad_clip: 1.0
+  eval_batches: 10
+  eval_batch_size: 4
+  log_every: 20
+  save_every: 0
+  device: auto
+  threads: 2
+  amp: false
+  demo: true

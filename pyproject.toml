@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corecpu-lab"
+version = "0.1.0"
+description = "Factorial neural network architecture laboratory: conventional / CoreCPU x conventional / SEC"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "313 — CoreCPU research direction"}]
+dependencies = ["torch>=2.2", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+corecpu-lab = "corecpu_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

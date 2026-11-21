@@ -1,0 +1,20 @@
+name: CPU unit tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: python -m pip install -e '.[dev]'
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: New architecture self-test
+        run: python -m corecpu_lab selftest
+      - name: Archived v0.1 self-test
+        run: python legacy/v0.1/core_cpu.py selftest
